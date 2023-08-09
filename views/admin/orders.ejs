@@ -1,0 +1,72 @@
+<%- include('../layouts/header.ejs')%>
+<br>
+<br>
+<section class="md">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <!-- left panel -->
+            
+            <!-- end left panel -->
+
+            <!-- right panel -->
+            <div class="col-lg-12">
+
+                <div class="common-block">               
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Address</th>
+                                <th>Payment</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                
+                            </tr>
+                        </thead>
+                      <tbody>
+                        
+                        <%if(orderDetails.length > 0){
+
+                            for(let i =0 ;i<orderDetails.length;i++){
+                                %>
+                                <tr>
+                                    <td><%=orderDetails[orderDetails.length-i-1]._id%></td>
+                                    <td><%=orderDetails[orderDetails.length-i-1].date.toISOString().substring(0,10)%></td>
+                                    <td><%=orderDetails[orderDetails.length-i-1].deliveryAddress%></td>
+                                    <td><%=orderDetails[orderDetails.length-i-1].paymentMethod%></td>
+                                    <td>₹<%=orderDetails[orderDetails.length-i-1].totalAmount%></td>
+                                    <td><%=orderDetails[orderDetails.length-i-1].status%></td>
+                                   
+                                    <td>
+                                        <a href="/admin/editOrder?id=<%=orderDetails[orderDetails.length-i-1].id%>">
+                                        <div class="pricing mt-1">
+                                            <button  class="btn btn-danger py-2 px-3" style="margin-bottom: 2px;">Edit</button>
+                                        </div>
+                                    </a>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/orderDetails?id=<%=orderDetails[orderDetails.length-i-1].id%>">
+                                        <div class="pricing mt-1">
+                                            <button  class="btn btn-primary py-2 px-3" style="margin-bottom: 2px;">view</button>
+                                        </div>
+                                    </a>
+                                    </td>
+                                </tr>
+                                
+                                <%}
+                      }%>
+                      </tbody>
+                    </table>
+                </div>
+                
+                </div>
+
+            </div>
+           
+        </div>
+    </div>
+</section>

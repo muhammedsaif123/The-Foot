@@ -1,0 +1,168 @@
+<%- include('../layouts/header.ejs')%>
+<br>
+<div id="main-wrapper">
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-11 grid-margin" style="margin-left: 40px;">
+            <div class="card card-white">
+                <br>
+                <div class="card-heading clearfix">
+                    <h4 class="card-title" style="margin-left: 15px;">Edit Coupon</h4>
+                </div>
+                <div class="card-body">
+                    <form id="myForm" method="post">
+                        <div class="form-group">
+                            <label for="exampleInput1">Code</label>
+                            <input class="form-control" value="<%=couponData.code%>"  id="code" name="code"type="text"require/>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="exampleInput2">Discount Type
+                            <select class="form-control"  name="discountType"id="discountType" >
+                                <option>Fixed</option>
+                                <option>Percentage Type</option>
+                               </select>
+                            </label>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Discount Amount</label>
+                            <input class="form-control"value="<%=couponData.discountAmount%>"id="amount"name="amount"type="number" required/>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>
+                                <span class="text-gray-700 dark:text-gray-400">Expiry Date</span>
+                                <input class="form-control"id="date" name="date"type="date"required/>
+                            </label>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="exampleInput3">Max CartAmount</label>
+                            <input class=  "form-control"value="<%=couponData.maxCartAmount%>"id="cartAmount"name="cartAmount" type="number" required />
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="validationCustom02">Maximum Discount Amount </label>
+                            <input class= "form-control" value="<%=couponData.discountAmount%>" id="discountAmount"name="discountAmount"type="number"required />
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="block text-sm col-md-10">
+                              <span class="text-gray-700 dark:text-gray-400 ">Max Coupons</span>
+                              <input class= "form-control"value="<%=couponData.maxUsers%>"id="couponCount"name="couponCount" type="number" required/>  
+                            </label>
+                          </div>
+                          <br>
+                          <input type="submit" value="Submit" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+
+    <!-- row -->
+    
+    <!-- end row -->
+</div>
+
+<script>
+     
+    let name=document.getElementById("code")
+    let discountType=document.getElementById("discountType")
+    let discountAmount=document.getElementById("amount")
+    let expiryDate=document.getElementById("date")
+    let maxCartAmount=document.getElementById("cartAmount")
+    let maxDiscountAmount=document.getElementById("amount")
+    let maxCoupon=document.getElementById("couponCount")
+
+
+
+    name.addEventListener("input",()=>{
+      if(name.value.trim()==''){
+        name.setCustomValidity("name cannot be null")
+      }else if(name.value.trim().length<=4){
+        name.setCustomValidity("minimum 4 letters required")
+
+      }
+      else{
+        name.setCustomValidity("")
+      }
+    })
+    discountType.addEventListener("input",()=>{
+      if (discountType.value.trim()==""){
+        discountType.setCustomValidity("discount type cannot be null")
+
+      }else{
+        discountType.setCustomValidity("")
+      }
+    })
+    discountAmount.addEventListener("input",()=>{
+      if(discountAmount.value.trim()==""){
+        discountAmount.setCustomValidity("discount Amount cannot be null")
+
+      }else{
+        discountAmount.setCustomValidity("")
+      }
+    })
+    // image.addEventListener("input",()=>{
+    //   if(image.files.length===0){
+    //     image.setCustomValidity("image field cannot be empty")
+
+    //   }else{
+    //     image.setCustomValidity("")
+    //   }
+    // })
+    // if( document.getElementById("image").files.length == 0 ){
+    //     image.setCustomValidity("image field cannot be empty")
+    //  }else{
+    //   image.setCustomValidity("")
+    //  }
+    expiryDate.addEventListener("input",()=>{
+      if(expiryDate.value.trim()==""){
+        expiryDate.setCustomValidity("expiry date cannot be empty")
+
+      }else{
+        expiryDate.setCustomValidity("")
+
+      }
+    })
+
+    maxCartAmount.addEventListener("input",()=>{
+      if(maxCartAmount.value.trim()==""){
+        maxCartAmount.setCustomValidity("maximum cart amount cannot be empty")
+
+      }else{
+        maxCartAmount.setCustomValidity("")
+
+      }
+    })
+
+    maxDiscountAmount.addEventListener("input",()=>{
+      if(maxDiscountAmount.value.trim()==""){
+        maxDiscountAmount.setCustomValidity("maximum discount amount cannot be empty")
+
+      }else{
+        maxDiscountAmount.setCustomValidity("")
+
+      }
+    })
+
+    maxCoupon.addEventListener("input",()=>{
+      if(maxCoupon.value.trim()==""){
+        maxCoupon.setCustomValidity("maximum coupon cannot be empty")
+
+      }else{
+        maxCoupon.setCustomValidity("")
+
+      }
+    })
+    const form = document.getElementById("myForm")
+    form.addEventListener("submit",(event)=>{
+      event.preventDefault();
+      alert("Add Coupon")
+      form.submit()
+    })
+   
+  </script>

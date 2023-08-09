@@ -1,0 +1,138 @@
+<%- include('../layouts/header.ejs')%>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <script src="cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Add the following JavaScript scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+<div class="content-wrapper">
+  <!-- Content -->
+
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">product List</span></h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+      <h5 class="card-header"></h5>
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>productName</th>
+              <th>image</th>
+              <th>price</th>
+              <th>Stock</th>
+              <th>category</th>
+              <th>description</th>
+              <th>status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <%
+            if(product.length>0){
+              for(i=0;i<product.length;i++){
+                %>
+                <tr>
+                  <td><%=product[i].productName%></td>
+                  <td><img src="/product/<%=product[i].image[3]%>" alt="img" width="50px" height="50px"></td>
+                  <td>₹<%=product[i].price%></td>
+                  <td><%=product[i].stockQuantity%></td>
+                  <td><%=product[i].category%></td>
+                  <td><%=product[i].description%></td>
+                  <td><%=product[i].is_List%></td>
+                  <td><div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                      <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a href="/admin/editProduct?id=<%=product[i].id%>"   class="dropdown-item" href="javascript:void(0);"
+                        ></i> Edit</a
+                      >
+                      <%if(product[i].is_List==true){%>
+                      <a href="#" onclick="UnlistProduct('<%=product[i].id%>')" class="dropdown-item" href="javascript:void(0);"
+                        ></i> UnList</a>
+                        <%}else{%>
+                          <a href="#" onclick="listProduct('<%=product[i].id%>')" class="dropdown-item" href="javascript:void(0);"
+                            ></i> List</a>
+                          <%}%>
+                    </div>
+                  </div></td>
+                </tr>
+                <%
+              }
+            }else{
+              %>
+              <tr><p>No Products Found</p></tr>
+              <%
+            }
+            %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<!-- <%- include('../layouts/footer.ejs')%> -->
+<script>
+  function listProduct(productId){
+    Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, List'
+        }).then((result) => {
+          console.log(result,'hiii');
+          if (result.isConfirmed ) {
+            $.ajax({
+              url: '/admin/List',
+              method: 'post',
+              data: {
+                id: productId
+              },
+              success: (response) => {
+                if (response.is_List) {
+                  location.reload();
+                }
+              },
+              error: (error) => {
+                console.error(error);
+              }
+            });
+          }
+        });
+  }
+
+  function UnlistProduct(productId){
+    Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, Un List'
+        }).then((result) => {
+          console.log(result,'hiii');
+          if (result.isConfirmed) {
+            $.ajax({
+              url: '/admin/unList',
+              method: 'post',
+              data: {
+                id: productId
+              },
+              success: (response) => {
+                if (response.is_List) {
+                  location.reload();
+                }
+              },
+              error: (error) => {
+                console.error(error);
+              }
+            });
+          }
+        });
+  }
+</script>

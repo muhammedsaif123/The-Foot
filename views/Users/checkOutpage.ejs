@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from smartshop.websitelayout.net/home-shop-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Jan 2023 16:00:07 GMT -->
+<head>
+
+    <!-- metas -->
+    <meta charset="utf-8">
+    <meta name="author" content="Chitrakoot Web" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="Multipurpose eCommerce Template + Admin" />
+    <meta name="description" content="Smartshop - Multipurpose eCommerce Template + Admin" />
+
+    <!-- title  -->
+    <title>The Foot</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/logos/favicon.png">
+    <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png">
+
+    <!-- plugins -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+	<script src="cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- revolution slider css -->
+    <link rel="stylesheet" href="css/rev_slider/settings.css">
+    <link rel="stylesheet" href="css/rev_slider/layers.css">
+    <link rel="stylesheet" href="css/rev_slider/navigation.css">
+
+    <!-- theme core css -->
+    <link href="css/styles-3.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- PAGE LOADING
+    ================================================== -->
+    
+
+    <!-- MAIN WRAPPER
+    ================================================== -->
+    <div class="main-wrapper mp-pusher" id="mp-pusher">
+
+        <!-- HEADER
+        ================================================== -->
+        <header class="header-light-nav header-02">
+
+            <div class="navbar-default">
+
+                <!-- top search -->
+                <div class="top-search bg-primary">
+                    <div class="container-fluid">
+                        <form class="search-form" action="#" method="GET">
+                            <div class="input-group">
+                                <span class="input-group-addon cursor-pointer">
+                                    <button class="search-form_submit fas fa-search display-27 text-white" type="submit"></button>
+                                </span>
+                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off" placeholder="Type & hit enter...">
+                                <span class="input-group-addon close-search"><i class="fas fa-times display-27 mt-2"></i></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end top search -->
+
+                <div class="container" >
+                    <div class="row align-items-center g-0">
+                        <div class="col-12 col-lg-12">
+                            <div class="menu_area alt-font">
+                                <nav class="navbar navbar-expand-lg navbar-light p-0">
+
+                                    <div class="navbar-header navbar-header-custom ">
+                                        <!-- logo -->
+                                        <!-- <a href="home-shop-1.html" class="navbar-brand logodefault"><img id="logo" src="img/logos/logo-color3.png" alt="logo"></a> -->
+                                        <!-- end logo -->
+                                    </div>
+
+                                    <!-- menu toggler -->
+                                    <div class="navbar-toggler"></div>
+                                    <!-- end menu toggler -->
+
+                                    <!-- menu area -->
+                                    <ul class="navbar-nav mx-auto" id="nav" style="display: none;">
+
+                                        <li><a href="/home">Home</a>
+                                           
+                                        </li>
+                                        <li><a href="shop">shop</a>
+                                           
+                                        </li>
+                                        <li><a href="cart">Cart</a>
+                                            
+                                        </li>
+                                        
+                                        <li><a href="order">order</a>
+                                            
+                                        </li>
+                                        <li><a href="#">Pages</a>
+                                            
+                                        </li>
+                                        <li><a href="#">Profile</a>
+                                            <ul>
+                                                <li><a href="/profile">Profile</a></li>
+                                                <li><a href="/logout">LogOut</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <!-- end menu area -->
+
+                                    <!-- attribute navigation -->
+                                    <!-- <div class="attr-nav">
+                                        <ul>
+                                             <li class="dropdown me-3 me-lg-0">
+                                                <a href="/cart " class="dropdown-toggle" data-bs-toggle="dropdown">
+                                                    <i class="ti-bag"></i>
+                                                    
+                                                </a>
+                                            </li> 
+                                              <li class="search"><a href="#"><i class="ti-search"></i></a></li>  
+                                        </ul> 
+                                    </div> -->
+                                     <!-- end attribute navigation   -->
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        </header>
+        
+        <!-- CATEGORY MP-MENU
+        ================================================== -->
+        
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <form id="checkout-form">
+            <section class="page-title-section bg-img cover-background" style="background: url('img/bg/page-title.jpg');padding: 0;height: 380px;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;position: absolute;top: 0;">Shop Checkout</h1></div>
+                <div class="breadcrumbs-info">
+    
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- CHECKOUT
+        ================================================== -->
+        <section class="md" style="padding-left: 40px;padding-right: 30px;">
+           <div class="row">
+            <div class="col-md-6">
+            <div class="col-lg-9 col-12 pe-lg-2-3 mb-1-9 mb-lg-0">
+                <a href="addAddress" class="btn btn-info" style="width:100p">Add Address</a>
+                <br>
+                
+                <div class="col-md-12 ">
+                    
+                 
+                  <%if(data[0].addresses.length > 0){%>
+
+                    <% data[0].addresses.forEach((value,index)=>{ %>
+                        <br>
+                        <div class="cart-detail row card " style="padding-left: 20px; background-color: rgb(215, 249, 250);" >
+                            <br>
+                            <label for="radio">
+                                <input type="radio" name="address" id=""
+                                    value="<%=value.userName %>,<%=value.lname %>,<%=value.address %>  " required>
+                                    <br>
+                                <%=value.userName %><br>
+                                <%=value.city %> <br>
+                                <%=value.mobile %> <br>
+                                <%=value.address %> <br>
+                                <%=value.pincode %> <br>
+                            </label>
+                            <br>
+                            <div style="display: flex;">
+                                <div class="col-md-4">
+                                    <a class="btn btn-danger" href="/removeAddress?id=<%= value._id %>">DELETE</a>
+                                    
+                                </div>  
+                            </div>
+                            <br>
+                        </div>
+                   <%})%>
+                  <%}else{
+                    %>
+                    <span>no address</span>
+                  <%}%>
+                </div>
+            </div>
+        </div>
+          
+<br>
+            <!-- order summary -->
+            <div class="col-md-6">
+            <div class="col-lg-10 col-12 side-bar" >
+            <div class="widget" style="height: 320px;">
+
+                <div class="widget-title">
+                    <h5>Order Summary</h5>
+                </div>
+
+                <table class="table classic">
+                    <tbody>
+                        <tr>
+                            <th>Cart Subtotal:</th>
+                            <td class="text-gray-dark" id="gt4" >₹<%=Total%></td>
+                            <input type="hidden" value="<%=Total%>" id="m1">
+                        </tr>
+                        <tr>
+                            <th>Shipping:</th>
+                            <td class="text-gray-dark">Free</td>
+                        </tr>
+                        <tr>
+                            <th>Estimated tax:</th>
+                            <td class="text-gray-dark">0.00</td>
+                        </tr>
+                        <tr>
+                            <th>Total:</th>
+                            <td class="text-lg text-gray-dark">₹<%=Total%></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate ">
+                <div class="cart-total mb-3" >
+                  <h2 class="mb-4" style="color: #dbcc8f;">Applycoupon</h2>
+                  <form>
+                    <label for="coupon" style="color: black;padding-bottom: 20px;">CouponCode</label>
+                    <input style="border: 1px solid rgb(172, 172, 172);margin: 10px;border-radius: 8px;padding: 8px;" id="code" type="text" placeholder="enter coupon code">
+                    <button type="button" class="btn btn-primary" onclick="applycoupon($('#code').val())">Apply</button>
+                  </form>
+                  <hr>
+                  <style>
+                    /* CSS style to add spacing between span elements inside p tags */
+                    .total-price span {
+                      margin-right: 10px; /* Adjust the value as per your desired spacing */
+                    }
+                  </style>
+                  
+                  <!-- Your HTML code with the added CSS class -->
+                  <p class="d-flex total-price">
+                    <span>Total</span>
+                    <span id="gt2">₹<%=Total%></span>
+                  </p>
+                  <p class="d-flex total-price">
+                    <span>discount</span>
+                    <span id="gt3">₹0</span>
+                  </p>
+                  <p class="d-flex total-price">
+                    <span>Wallet</span>
+                    <span id="gt6">₹<%=Wallet.wallet%></span>
+                  </p>
+                  <p class="d-flex total-price">
+                    <span>Total</span>
+                    <span id="gt5">₹<%=Total%></span>
+                   
+                    <input type="hidden" value="<%=Total%>" id="gt8">
+                  </p>
+                  
+                </div>
+              </div>
+        </div>
+    </div>
+
+        <!-- place order -->
+        <div class="row">
+            <div class="horizontal" style="margin-bottom: 100px">
+                <h3 class="mb-4 mt-3">PAYMENT</h3>
+                <div class="mb-5">
+                  <input type="radio" id="COD" value="COD" name="payment" required >
+                  <label for="COD" style="color: black;margin: 0;">COD</label><br>
+                  <small style="margin-left: 17px;">Free delivery charge</small>
+                </div>
+                <div>
+                  <input type="radio" id="onlinePayment" value="onlinePayment" name="payment" required="">
+                  <label for="onlinePayment" style="color: black;margin: 0;">Online Payment</label><br>
+                  <small style="margin-left: 17px;">UPI,Net Banking,Credit Card...</small>
+                </div>
+                <br>
+                <%if(Wallet.wallet > Total ){%>
+                <div >
+                  <input type="radio" id="wallet" value="wallet" name="payment" required="">
+                  <label for="wallet" style="color: black;margin: 0;">Wallet</label><br>
+                  <small style="margin-left: 17px;"></small>
+                </div>
+                <%}%>
+            </div>
+        
+        <div style="margin-bottom: 50px;">
+        <input style="font-size: 20px;padding: 10px 80px 10px 80px;" type="submit" class="btn btn-danger" value="PlaceOrder">
+      </div>
+        </div>          
+        </section>
+    </form>
+        <!-- FOOTER
+        ================================================== -->
+        <footer class="classic-footer bordered">
+
+          <div class="container">
+              <div class="row">
+
+                  <div class="col-lg-4 col-md-6 mb-2-3 mb-lg-0">
+                      <h3>Contact Us</h3>
+                      <ul class="list-style mb-2 ps-0">
+                          <li>
+                              <strong>Address:</strong><span class="ps-1">74 Guild Street 542B, Town MT.</span>
+                          </li>
+                          <li>
+                              <strong>Phone: </strong><span class="ps-1">(+44) 123 456 789</span>
+                          </li>
+                          <li>
+                              <strong>Email: </strong><span class="ps-1">addyour@emailhere</span>
+                          </li>
+                      </ul>
+
+                      <ul class="list-style-two mb-0 ps-0">
+                          <li>
+                              <a href="#"><i class="fab fa-facebook-f"></i></a>
+                          </li>
+                          <li>
+                              <a href="#"><i class="fab fa-twitter"></i></a>
+                          </li>
+                          <li>
+                              <a href="#"><i class="fab fa-instagram"></i></a>
+                          </li>
+                          <li>
+                              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                          </li>
+                      </ul>
+                  </div>
+
+                  <div class="col-lg-4 col-md-6 mb-2-3 mb-lg-0">
+
+                      <div class="row">
+                          <div class="col-md-6 col-6 pe-lg-0">
+                              <h3>Quick Links</h3>
+                              <ul class="list-style ps-0">
+                                  <li><a href="#">News</a></li>
+                                  <li><a href="#">History</a></li>
+                                  <li><a href="#">Our shop</a></li>
+                                  <li><a href="#">Secure shopping</a></li>
+                                  <li><a href="#">Privacy policy</a></li>
+                              </ul>
+                          </div>
+                          <div class="col-md-6 col-6 pe-lg-0">
+                              <h3>My Account</h3>
+                              <ul class="list-style ps-0">
+                                  <li><a href="#">My Account</a></li>
+                                  <li><a href="#">Order History</a></li>
+                                  <li><a href="#">Wish List</a></li>
+                                  <li><a href="#">Newsletter</a></li>
+                                  <li><a href="#">Returns</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-12">
+                      <div class="ps-lg-1-9">
+
+                          <div class="row">
+                              <div class="col-lg-12 col-md-6 mb-1-9">
+                                  <h3>News Letter</h3>
+                                  <form method="post">
+                                      <div class="form-group footer-subscribe">
+                                          <input type="email" placeholder="Subscribe with us" id="email" class="form-control">
+                                          <a href="#" class="butn-style2"><i class="fas fa-paper-plane display-27 mt-1"></i></a>
+                                      </div>
+                                  </form>
+                              </div>
+                              <div class="col-lg-12 col-md-6">
+                                  <h3>Download Our Mobile Apps</h3>
+                                  <div class="text-start">
+                                      <a href="#" class="btn bordered text-start ms-1 ms-md-0 mt-1 mt-md-0 mb-0 mb-lg-2 mb-xl-0">
+                                          <span class="media align-items-center">
+                                      <span class="fab fa-apple display-26 pe-3"></span>
+                                          <span class="media-body">
+                                          <span class="d-block display-32">Download on the</span>
+                                          <strong>App Store</strong>
+                                          </span>
+                                          </span>
+                                      </a>
+
+                                      <a href="#" class="btn bordered text-start ms-1 ms-lg-0 ms-xl-1 mt-1 mt-md-0">
+                                          <span class="media align-items-center">
+                                      <span class="fab fa-google-play display-26 pe-3"></span>
+                                          <span class="media-body">
+                                          <span class="d-block display-32">Get it on</span>
+                                          <strong>Google Play</strong>
+                                          </span>
+                                          </span>
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="footer-bottom py-1-9 mt-6 mt-lg-8">
+              <div class="container">
+                  <div class="row align-items-center">
+                      <div class="col-md-6 mb-3 mb-md-0">
+                          <div class="text-center text-md-start">
+                            <p class="mb-0">&copy; <span class="current-year"></span> The Foot is Powered by <a href="" target="_blank" class="text-dark"> Saifu</a></p>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <ul class="list-style-17 text-center text-md-end">
+                              <li><img src="img/content/payment-options/visa.png" alt="..."></li>
+                              <li><img src="img/content/payment-options/mastercard.png" alt="..."></li>
+                              <li><img src="img/content/payment-options/paypal.png" alt="..."></li>
+                              <li><img src="img/content/payment-options/amex.png" alt="..."></li>
+                              <li><img src="img/content/payment-options/discover.png" alt="..."></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </footer>
+    
+    <!-- BUY TEMPLATE
+    ================================================== -->
+    <div class="buy-theme alt-font d-none d-lg-inline-block"><a href="https://wrapbootstrap.com/theme/smartshop-multipurpose-ecommerce-template-WB0N7CT4D" target="_blank"><i class="fas fa-cart-plus"></i><span>Buy Template</span></a></div>
+
+    <div class="all-demo alt-font d-none d-lg-inline-block"><a href="https://www.chitrakootweb.com/contact.html" target="_blank"><i class="far fa-envelope"></i><span>Quick Question?</span></a></div>
+    
+    <!-- SCROLL TO TOP
+    ================================================== -->
+    <a href="#" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+    
+    <!-- all js include start -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+
+    <!-- bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- core.min.js -->
+    <script src="js/core.min.js"></script>
+
+    <!-- custom scripts -->
+    <script src="js/main.js"></script>
+	
+	<!-- all js include end -->
+
+</body>
+
+
+<!-- Mirrored from smartshop.websitelayout.net/shop-checkout-payment.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Jan 2023 16:00:39 GMT -->
+</html>
+
+    <script>
+        $("#checkout-form").submit((e)=>{
+          const amount = document.getElementById("gt8").value;
+          console.log(amount);
+          console.log(amount);
+          
+          
+        //   const amount2 = document.getElementById("gt2").value;
+        //   const discount = document.getElementById("gt3").value;
+        
+
+          let address = $("input[name=address]:checked").val();
+          let payment = $("input[name=payment]:checked").val();
+        console.log(payment);
+          e.preventDefault();
+          $.ajax({
+            
+            url:"/checkOutpage",
+            method:"post",
+            data:{
+              amount:amount,
+              address:address,
+              payment:payment
+            },
+            
+            success:(response)=>{
+              if(response.codSuccess){
+                location.href = '/successPage';
+              }else{
+                razorpayPayment(response.order);
+              }
+            }
+          })
+        })
+      
+        function razorpayPayment(order){
+      
+                var options = {
+                    "key": "rzp_test_8JeRV7JUwHUi0X", // Enter the Key ID generated from the Dashboard
+                    "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                    "currency": "INR",
+                    "name": "Acme Corp", //your business name
+                    "description": "Test Transaction",
+                    "image": "https://example.com/your_logo",
+                    "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                    "handler": function (response){
+                        verifyPayment(response, order);
+                    },
+                    "prefill": {
+                        "name": "Gaurav Kumar", //your customer's name
+                        "email": "gaurav.kumar@example.com",
+                        "contact": "9000090000"
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                    rzp1.open();
+              }
+
+    function verifyPayment(payment, order) {
+  const amount = document.getElementById("m1").value;
+  console.log(amount);
+
+  $.ajax({
+    url: "/verifyPayment",
+    method: "post",
+    data: {
+      payment,
+      amount,
+      order,
+    },
+    success: (response) => {
+      console.log("hiii");
+      console.log(response);
+      if (response.success) {
+        // Redirect to successPage with order ID as a query parameter
+        location.href = '/successPage';
+      } else {
+        alert('payment failed');
+      }
+    },
+  });
+}
+
+
+    function applycoupon(code){
+    const amount = document.getElementById('m1').value;
+    console.log(amount);
+    $.ajax({
+      url:"/applyCoupon",
+      data:{  
+        code:code,
+        amount:amount
+      },
+      method:"post",
+      success:(response)=>{
+        console.log(response);
+        if(response.user){
+          console.log("This User already used this coupon");
+          Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'This coupon already used!'
+              })
+        }else if(response.limit){
+          console.log("coupon limit exceeded");
+          Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'coupon limit exceeded!'
+              })
+        }else if(response.status){
+          console.log("This coupon now not in use");
+          Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'coupon limit exceeded!'
+              })
+        }else if(response.cartAmount){
+          console.log("You cant use the coupon...Buy more");
+          Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You cant use the coupon...Buy more'
+              })
+        }else if(response.date){
+          console.log("coupon date expired");
+          Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'date expired!!!'
+              })
+        }else if(response.amountOkey){
+          console.log("discount granded");
+          document.getElementById('gt3').innerHTML = response.disAmount
+          const values= response.disTotal
+          console.log(values+'valu');
+        const innervalue=  document.getElementById('gt8')
+        innervalue.value=values
+
+          document.getElementById('gt5').innerHTML = values
+          console.log("done");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Discount redeemed',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }else if(response.invalid){
+          console.log("invalid coupon");
+          Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Invalid Coupon!!!'
+              })
+        }
+      }
+    })
+  }
+ </script>

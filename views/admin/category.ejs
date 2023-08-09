@@ -1,0 +1,44 @@
+<%- include('../layouts/header.ejs')%>
+<div class="content-wrapper">
+  <!-- Content -->
+
+  <div class="container-xxl flex-grow-1 container-p-y">
+    
+    <h4 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Category List</span></h4>
+  
+      
+    
+    
+    <a href="/admin/addCategory"><button type="button" class="btn btn-primary">Add Category</button></a>
+    <br>
+    <br>
+    <!-- Basic Bootstrap Table -->
+    <div class="card ">
+      <!-- <h5 class="card-header">categoryList</h5> -->
+      <div class="table-responsive text-nowrap">
+        <table class="table" >
+          <thead>
+            <tr>
+              <th>category</th>
+              <th>Action</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <% for(i=0;i<category.length;i++){ %>
+            <tr>
+              <td><%=category[i].categoryName%></td>
+              <td>
+                <a href="/admin/editCategory?id=<%=category[i].id%>">
+                <div class="pricing mt-1">
+                    <button  class="btn btn-danger py-1 px-3" style="margin-bottom: 2px;">Edit</button>
+                </div>
+            </a>
+            </td>
+            </tr>
+          <%}%>
+        
+          </tbody>
+          
+        </table>
+         

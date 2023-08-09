@@ -1,0 +1,283 @@
+<%- include('../layouts/User/header.ejs')%>
+        
+        <!-- CATEGORY MP-MENU
+        ================================================== -->
+        <div id="mp-menu" class="mp-menu">
+           
+        </div>
+
+        <!-- PAGE TITLE
+        ================================================== -->
+        <section class="page-title-section bg-img cover-background" style="background: url('img/bg/page-title.jpg');padding: 0;height: 380px;">
+            <div class="container">
+
+                <div class="title-info">
+                    <h1 style="color: aliceblue;position: absolute;top: 0;">Order Product List</h1></div>
+                <div class="breadcrumbs-info">
+                    
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- PRODUCT LIST
+        ================================================== -->
+        <section class="md">
+            <div class="container">
+                <div class="row">
+
+                    <!-- sidebar panel -->
+                    <div class="col-lg-3 col-12 side-bar order-2 order-lg-1">
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+
+                    </div>
+                    <!-- end sidebar panel -->
+
+                    <!-- right panel section -->
+                    <div class="col-lg-9 col-12 ps-lg-1-9 order-1 order-lg-2 mb-1-9 mb-lg-0">
+
+
+                        
+                            </div>
+                            <%orderData.products.forEach((product)=>{%>
+
+                            
+                            <div class="col-11 col-sm-6 col-xl-4 mb-1-9">
+                                <div class="product-grid">
+                                    <div class="product-img">
+                                        <a href="shop-product-detail.html"><img src="/product/<%=product.productId.image[0]%>" alt="..."></a>
+                                    </div>
+                                    <div class="product-description">
+                                        <h3><a href="shop-product-detail.html"><%=product.productId.productName%></a></h3>
+                                        <h4 class="price">
+                                                        <span class="offer-price" style="color: red;font-weight:bold;">₹<%=product.productPrice%></span>
+                                                    </h4>
+                                        <h6 class="description">
+                                            <span class="offer-price">Description: <%=product.productId.description%></span>
+                                        </h6>
+                                        <h6 class="count">
+                                            <span class="product count" style="color: red;font-weight:bold;" >No of products: <%=product.count%></span>
+                                        </h6>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        <%})%>
+                            
+                     </div>
+
+             </div>
+
+                        <!-- pagination -->
+                        
+                        <!-- end pagination -->
+
+                    </div>
+                    <!-- end right panel section -->
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- footer -->
+<!-- //////////////////////////////////////////////////////////////////// -->
+        <footer class="classic-footer bordered">
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 mb-2-3 mb-lg-0">
+                        <h3>Contact Us</h3>
+                        <ul class="list-style mb-2 ps-0">
+                            <li>
+                                <strong>Address:</strong><span class="ps-1">74 Guild Street 542B, Town MT.</span>
+                            </li>
+                            <li>
+                                <strong>Phone: </strong><span class="ps-1">(+44) 123 456 789</span>
+                            </li>
+                            <li>
+                                <strong>Email: </strong><span class="ps-1">addyour@emailhere</span>
+                            </li>
+                        </ul>
+
+                        <ul class="list-style-two mb-0 ps-0">
+                            <li>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-2-3 mb-lg-0">
+
+                        <div class="row">
+                            <div class="col-md-6 col-6 pe-lg-0">
+                                <h3>Quick Links</h3>
+                                <ul class="list-style ps-0">
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">History</a></li>
+                                    <li><a href="#">Our shop</a></li>
+                                    <li><a href="#">Secure shopping</a></li>
+                                    <li><a href="#">Privacy policy</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-6 pe-lg-0">
+                                <h3>My Account</h3>
+                                <ul class="list-style ps-0">
+                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="#">Wish List</a></li>
+                                    <li><a href="#">Newsletter</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="ps-lg-1-9">
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6 mb-1-9">
+                                    <h3>News Letter</h3>
+                                    <form method="post">
+                                        <div class="form-group footer-subscribe">
+                                            <input type="email" placeholder="Subscribe with us" id="email" class="form-control">
+                                            <a href="#" class="butn-style2"><i class="fas fa-paper-plane display-27 mt-1"></i></a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <h3>Download Our Mobile Apps</h3>
+                                    <div class="text-start">
+                                        <a href="#" class="btn bordered text-start ms-1 ms-md-0 mt-1 mt-md-0 mb-0 mb-lg-2 mb-xl-0">
+                                            <span class="media align-items-center">
+                                        <span class="fab fa-apple display-26 pe-3"></span>
+                                            <span class="media-body">
+                                            <span class="d-block display-32">Download on the</span>
+                                            <strong>App Store</strong>
+                                            </span>
+                                            </span>
+                                        </a>
+
+                                        <a href="#" class="btn bordered text-start ms-1 ms-lg-0 ms-xl-1 mt-1 mt-md-0">
+                                            <span class="media align-items-center">
+                                        <span class="fab fa-google-play display-26 pe-3"></span>
+                                            <span class="media-body">
+                                            <span class="d-block display-32">Get it on</span>
+                                            <strong>Google Play</strong>
+                                            </span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="footer-bottom py-1-9 mt-6 mt-lg-8">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <div class="text-center text-md-start">
+                                <p class="mb-0">&copy; <span class="current-year"></span> The Foot is Powered by <a href="" target="_blank" class="text-dark"> Saifu</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-style-17 text-center text-md-end">
+                                <li><img src="img/content/payment-options/visa.png" alt="..."></li>
+                                <li><img src="img/content/payment-options/mastercard.png" alt="..."></li>
+                                <li><img src="img/content/payment-options/paypal.png" alt="..."></li>
+                                <li><img src="img/content/payment-options/amex.png" alt="..."></li>
+                                <li><img src="img/content/payment-options/discover.png" alt="..."></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        
+    </div>
+    
+    <!-- BUY TEMPLATE
+    ================================================== -->
+    <div class="buy-theme alt-font d-none d-lg-inline-block"><a href="https://wrapbootstrap.com/theme/smartshop-multipurpose-ecommerce-template-WB0N7CT4D" target="_blank"><i class="fas fa-cart-plus"></i><span>Buy Template</span></a></div>
+
+    <div class="all-demo alt-font d-none d-lg-inline-block"><a href="https://www.chitrakootweb.com/contact.html" target="_blank"><i class="far fa-envelope"></i><span>Quick Question?</span></a></div>
+    
+    <!-- SCROLL TO TOP
+    ================================================== -->
+    <a href="#" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+    
+    <!-- all js include start -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+
+    <!-- bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- core.min.js -->
+    <script src="js/core.min.js"></script>
+
+    <!-- custom scripts -->
+    <script src="js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	
+	<!-- all js include end -->
+
+</body>
+
+
+<!-- Mirrored from smartshop.websitelayout.net/shop-product-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Jan 2023 16:00:39 GMT -->
+</html>
+<script>
+    function show(id){
+        $.ajax({
+            url:"/addToCart",
+            method:"post",
+            data:{
+                query:id
+            },
+            success:(response)=>{
+                if(response.success){
+                    console.log('8788');
+                    Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Product added to cart',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                }
+            }
+        })
+    }
+
+</script>

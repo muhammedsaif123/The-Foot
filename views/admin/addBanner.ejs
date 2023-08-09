@@ -1,0 +1,92 @@
+<%- include('../layouts/header.ejs')%>
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Add Banner</span></h4>
+
+      <!-- Basic Layout & Basic with Icons -->
+      <div class="row">
+        <!-- Basic Layout -->
+        <div class="col-xxl">
+          <div class="card mb-4">
+            <div class="card-body">
+              <form method="post" enctype="multipart/form-data">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label"  for="basic-default-name">Header</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="header"  class="form-control" id="header" placeholder="" />
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label"  for="basic-default-name">image</label>
+                    <div class="col-sm-10">
+                        <input class="bt" style="height: 28px;width: 228px ; background-color: gray;color: white;" accept="Image/*" type="file" name="image"  ></div>
+                  </div>
+                  
+            
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label"  for="basic-default-name">description</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="description" class="form-control" id="description" placeholder="" />
+                    </div>
+                </div>
+                <div class="row justify-content-end">
+                  <div class="col-sm-10">
+                    <input type="submit" value="Save" class="btn btn-primary">
+                    <%
+                      if(typeof message !== 'undefined'){
+                          %>
+                          <h5 style="display: flex;width: 100%;justify-content: space-around;margin-top: 50px;font-family: Georgia, 'Times New Roman', Times, serif;color: green;"><%= message%></h5>
+                          <%
+                      }
+                      %>
+                      <%
+                      if(typeof error !== 'undefined'){
+                          %>
+                          <h5 style="display: flex;width: 100%;justify-content: space-around;margin-top: 50px;font-family: Georgia, 'Times New Roman', Times, serif;color: red;"><%= error%></h5>
+                          <%
+                      }
+                      %>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <script>
+     
+    
+          let header=document.getElementById("header")
+          let image=document.getElementById("image")
+         
+          
+    
+          header.addEventListener("input",()=>{
+            if(header.value.trim()==''){
+              header.setCustomValidity("header cannot be null")
+            }
+            else{
+              header.setCustomValidity("")
+            }
+          })
+          description.addEventListener("input",()=>{
+            if (description.value.trim()==""){
+              description.setCustomValidity("description cannot be null")
+    
+            }else{
+              description.setCustomValidity("")
+            }
+          })
+          
+          const form = document.getElementById("myForm")
+          form.addEventListener("submit",(event)=>{
+            event.preventDefault();
+            alert("Add Banner")
+            form.submit()
+          })
+         
+        </script>

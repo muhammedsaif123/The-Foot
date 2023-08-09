@@ -1,0 +1,26 @@
+<%- include('../layouts/header.ejs')%>
+
+<div class="container">
+    <h1 class="my-5">Edit Order Status</h1>
+    <form action="" method="post">
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select class="form-control" id="status" name="status">
+          <option value="pending" <% if (orderDetails.status === 'pending') { %>selected<% } %>>Pending</option>
+          <option value="processing" <% if (orderDetails.status === 'processing') { %>selected<% } %>>Processing</option>
+          <option value="Returned" <% if (orderDetails.status === 'Returned') { %>selected<% } %>>Returned</option>
+          <option value="delivered" <% if (orderDetails.status === 'delivered') { %>selected<% } %>>Delivered</option>
+          <option value="cancelled" <% if (orderDetails.status === 'cancelled') { %>selected<% } %>>Cancelled</option>
+        </select>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <%
+    if(typeof message != 'undefined'){
+     %>
+     <p style="color: red;font-family: Georgia, 'Times New Roman', Times, serif;"><%=message%></p>
+     <%
+    }
+    %>
+  </div>

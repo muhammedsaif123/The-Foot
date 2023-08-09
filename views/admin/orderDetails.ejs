@@ -1,0 +1,78 @@
+<%- include('../layouts/header.ejs')%>
+<br>
+<br>
+
+<section class="md" >
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="common-block">   
+                    <div class="inner-title">
+                        <h4 class="mb-0">User Delivery Details</h4>
+                    </div>       
+                    <br>     
+                <div class="table-responsive">
+                    <table class="table" >
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Date</th>
+                                <th>Address</th>
+                                <th>Status</th>   
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <td><%=orderDetails.userName%></td>
+                                <td><%=orderDetails.date%></td>
+                                <td><%=orderDetails.deliveryAddress%></td>
+                                <td><%=orderDetails.status%></td>
+                            </tbody>
+                        </table>
+                    </div>                    
+                </div>               
+            </div>           
+        </div>
+    </div>
+</section>
+
+<br>
+<section class="md">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="common-block">   
+                    <div class="inner-title">
+                        <h4 class="mb-0">Product Details</h4>
+                    </div>       
+                    <br>     
+                <div class="table-responsive">
+                    <table class="table" >
+                        <thead>
+                            <tr>
+                                <th>product</th>
+                                <th>name</th>
+                                <th>count</th>
+                                <th>price</th>   
+                            </tr>
+                        </thead>
+                        <tbody>  
+                           <%if(orderDetails.products.length > 0){%>
+
+                           <%orderDetails.products.forEach((product)=>{%>
+                            <tr>
+                                <td><a href=""><img style="height: 100px;width: 100px;"   src="/product/<%=product.productId.image[0]%>" alt="..."></a></td>
+                                <td><%=product.productId.productName%></td> 
+                                <td><%=product.count%></td> 
+                                <td><%=product.productPrice%></td> 
+                            </tr>
+                          <% })}%>
+                            
+
+                        </tbody>
+                        </table>
+                    </div>                    
+                </div>               
+            </div>           
+        </div>
+    </div>
+</section>
