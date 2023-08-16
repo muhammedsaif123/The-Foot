@@ -64,7 +64,7 @@
                                             <span class="offer-price">Description: <%=product.productId.description%></span>
                                         </h6>
                                         <h6 class="count">
-                                            <span class="product count" style="color: red;font-weight:bold;" >No of products: <%=product.count%></span>
+                                            <span class="product count" style="color: red;font-weight:bold;" >QTY: <%=product.count%></span>
                                         </h6>
                                     </div>
                                     
@@ -76,15 +76,148 @@
 
              </div>
 
-                        <!-- pagination -->
-                        
-                        <!-- end pagination -->
-
                     </div>
                     <!-- end right panel section -->
 
                 </div>
             </div>
+            <div class="main-pd-wrapper" id="invoice" style="width: 450px; margin: auto">
+                <div style="
+                            text-align: center;
+                            margin: auto;
+                            line-height: 1.5;
+                            font-size: 14px;
+                            color: #4a4a4a;
+                          ">
+                       
+          
+                          <p style="font-weight: bold; color: #000; margin-top: 15px; font-size: 18px;">
+                             Invoice/Bill Of Supply <span class="text-danger">StepUP</span> Retailers<br> Private Limited
+                          </p>
+                          <p style="margin: 15px auto;">
+                            A2, Test Street <br>
+                            Test Area Bangaluru 560001, Karnataka
+                          </p>
+                          <p>
+                            <b>GSTIN:</b> 0987653456789
+                          </p>
+                          <p>
+                            <b>CIN:</b> 0987653456789
+                          </p>
+                          <p>
+                            <b>FSSAI No. :</b> 0987653456789
+                          </p>
+                          <hr style="border: 1px dashed rgb(131, 131, 131); margin: 25px auto">
+                        </div>
+                        <table style="width: 100%; table-layout: fixed">
+                          <thead>
+                            <tr>
+                              <th style="width: 50px; padding-left: 0;">Sn.</th>
+                              <th style="width: 220px;">Item Name</th>
+                              <th>Price</th>
+                              <th>QTY</th>
+                              <th style="text-align: right; padding-right: 0;">Total Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <%orderData.products.forEach((value)=>{%>
+                              <tr class="invoice-items">  
+                              
+                                  <td></td>
+                                      <td ><%= value.productId.productName %> </td>
+                                      <td>₹<%= value.productPrice%></td>
+                                      <td><%= value.count %>PC</td>
+                                      <td style="text-align: right;">₹<%= value.productPrice * value.count%></td>
+                             <% })%>
+                             
+                              </tr>
+                            
+                            </tbody>
+                        </table>
+                        <table style="width: 100%;
+                        margin-top: 15px;
+                        border: 1px dashed #00cd00;
+                        border-radius: 3px;">
+                          <thead>
+                            <tr>
+                              <th>Sub Total</th>
+                             
+                              <th style="text-align: right;">₹ <%=orderData.Amount%></th>
+                              
+                            </tr>
+                            <tr>
+                              <td>Discount </td>
+                              
+                              <!-- <td style="text-align: right;">-₹ </td> -->
+                              
+                              <td style="text-align: right; color: #00cd00;" >₹ <%= orderData.Amount-orderData.totalAmount %></td>
+                                
+                            </tr>
+                            <tr>
+                              <!-- <td>Total Saving In Rs </td> -->
+                              
+                                <!-- <td style="text-align: right;">₹</td> -->
+                                
+                                <!-- <td style="text-align: right;">₹ 0</td> -->
+
+                            </tr>
+                            
+                          </thead>
+                       
+                        </table>
+          
+                        <table class="my-3" style="width: 100%;
+                        background: #fcbd024f;
+                        border-radius: 4px;">
+                          <thead>
+                            <tr>
+                              <th>Total</th>
+                              
+                              <th>&nbsp;</th>
+                              <th style="text-align: right;">₹<%= orderData.totalAmount %></th>
+                              
+                            </tr>
+                          </thead>
+                       
+                        </table>
+              </section>
+            </body>
+         
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn_3" onclick="invoice()">Save Invoice</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function invoice() {
+      var divToPrint = document.getElementById("invoice");
+      var invoiceContent = divToPrint.outerHTML;
+      
+      // Create a Blob with the invoice content
+      var blob = new Blob([invoiceContent], { type: "text/html" });
+
+      // Create a URL for the Blob
+      var url = URL.createObjectURL(blob);
+
+      // Create a download link
+      var downloadLink = document.createElement("a");
+      downloadLink.href = url;
+      downloadLink.download = "invoice.html";
+      downloadLink.style.display = "none";
+
+      // Append the link to the body and click it programmatically
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+
+      // Clean up by revoking the URL and removing the link
+      URL.revokeObjectURL(url);
+      document.body.removeChild(downloadLink);
+  }
+</script>
+
         </section>
         
         <!-- footer -->

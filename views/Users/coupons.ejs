@@ -175,7 +175,7 @@
                                 <h6>On Rs.<%=coupon[i].maxCartAmount %>  total cart amount purshase </h6>
                                 <span class="price">CODE : <%=coupon[i].code%></span>
                                 <br>
-                                <span>Exprire on <%=coupon[i].expiryDate%></span>
+                                <span>Exprire on <%= new Date(coupon[i].expiryDate).toLocaleDateString(undefined, { day: '2-digit', month: '2-digit', year: 'numeric' }) %></span>
                                
                             </div>
                         </div>

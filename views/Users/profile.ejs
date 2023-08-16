@@ -172,7 +172,13 @@
 
                                 <div class="text-center">
                                     <div class="pb-3">
+                                        
                                         <img class="img-fluid rounded-circle img-thumbnail" src="img/avatar/t-3.jpg" alt="...">
+                                        <br>
+                                        <br>
+                                        <h6>Name:<%=wallet.name%></h6>
+                                        <h6>Ph:<%=wallet.mobile%></h6>
+                                        <h6>Wallet:<%=wallet.wallet%></h6>
                                     </div>
                                     <h6 class="mb-0 display-28"></h6>
                                     
@@ -240,14 +246,6 @@
                                       </div>
                                     </div>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                          <p class="mb-0">Wallet</p>
-                                        </div>
-                                        <div class="col-sm-9">
-                                          <p class="text-muted mb-0"><%=wallet.wallet%></p>
-                                        </div>
-                                      </div><hr>
                                       
                                       
                                       <a href="editProfile?id=<%= userDetails.addresses[i]._id%>&i=<%=i%>" class="btn btn-success">Edit</a>

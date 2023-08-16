@@ -342,8 +342,24 @@
                     </div>
                     <!-- end right panel -->
                 </div>
+                <br>
+                
+                <div class="pagination text-small text-uppercase text-extra-dark-gray">
+                    <ul>
+                        <% for(i=0;i < totalPage; i++){ %>
+                            <% if(i+1 == page){ %> 
+                                <a href="/order?page=<%= i+1 %>" class="active"><%= i+1 %></a>
+                            <%} else { %>
+                                <a href="/order?page=<%= i+1 %>"><%= i+1 %></a>
+                            <% }%>
+                        <% } %>
+    
+                    </ul>
+                </div>
+                    
             </div>
         </section>
+       
         
         <!-- FOOTER
         ================================================== -->

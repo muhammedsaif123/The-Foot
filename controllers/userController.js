@@ -5,6 +5,8 @@ const Address = require('../models/addressModel')
 const Order = require('../models/orderModel')
 const Banner = require('../models/bannerModel')
 const nodemailer = require('nodemailer')
+const Category = require('../models/categoryModel');
+const { response } = require('../routers/userRoutes');
 
 const securePassword = async(password)=>{
     try {
@@ -197,13 +199,50 @@ const loadHome = async(req,res)=>{
     }
 
 }
-
-const loadShop = async (req, res)=>{
+const loadShop = async (req, res) => {
     try {
-        const product = await Product.find({is_List:false})
-        res.render('shop', { product});
+        const page = Number(req.query.page) || 1
+        const limit = 2
+        const skip = (page - 1) * limit
+
+        let price = req.query.value 
+        let category = req.query.category || "All"
+        let Search = req.query.search || ""
+        Search = Search.trim()
+
+        const categoryData = await Category.find()
+        let cat = []
+        for(i = 0; i < categoryData.length ; i++){
+            cat[i] = categoryData[i].categoryName
+        }
+
+        let sort;
+        category === "All" ? category = [...cat] : category = req.query.category.split(',')
+        req.query.value === "High" ? sort = -1 : sort = 1
+
+        const productData = 
+        await Product.aggregate([
+            {$match : {productName : {$regex : Search, $options : 'i'},category : {$in : category}}},
+            {$sort : {price : sort}},
+            {$skip : skip},
+            {$limit : limit}
+        ])
+        // await Product.find({name : {$regex : Search, $options :'i'}}).where("category").in([...category])
+        // .sort({price : sort}).skip(skip).limit(limit)
+
+        const productCount = (await Product.find(
+            {productName : {$regex : Search, $options :'i'}}).where("category").in([...category])).length
+        
+        const totalPage = Math.ceil(productCount / limit)
+
+        if(req.session.user_id){
+            res.render('shop',{ user: req.session.user_id, product : productData, category : categoryData,
+                page,Search,price, totalPage,cat : category})
+        }else {
+            res.render('login')
+        }
     } catch (error) {
-        console.log(error.message);
+        console.log(error.message)
     }
 }
 
@@ -221,7 +260,9 @@ const productDetail = async(req,res)=>{
 const userProfile = async(req,res)=>{
     try {
         const userDetails = await Address.findOne({userId:req.session.user_id});
+       
         const wallet = await User.findOne({_id:req.session.user_id})
+        console.log(wallet);
         res.render('profile',{userDetails,wallet})
     } catch (error) {
         console.log(error.message);
@@ -233,8 +274,8 @@ const editProfile = async(req,res)=>{
     try {
         const id = req.query.id
         const index  = req.query.i 
-        const User = await Address.find({})
-        const user = User[0].addresses[index] 
+        const User = await Address.findOne({userId:req.session.user_id})
+        const user = User.addresses[index] 
         res.render('editProfile',{user})
     } catch (error) {
         console.log(error.message);
@@ -347,5 +388,6 @@ module.exports = {
     checkPassword,
     newPassword,
     savePassword,
-    logOut
+    logOut,
+    // interconnection
 }

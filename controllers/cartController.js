@@ -74,7 +74,7 @@ const loadCart = async(req,res)=>{
 const addCart = async(req,res)=>{
 
     try {
-        
+        console.log(1);
         const productId = req.body.id;
         const userData = await User.findOne({_id:req.session.user_id});
         const productData = await Product.findOne({_id:productId});
@@ -96,6 +96,8 @@ const addCart = async(req,res)=>{
                 }
             }
             else{
+        console.log(11);
+
                 const cart = new Cart({
                     userName:userData._id,
                     user:userData.name,
@@ -106,6 +108,8 @@ const addCart = async(req,res)=>{
                 });
                 const cartData = await cart.save();
                 if(cartData){
+        console.log(111);
+
                     res.json({success:true})
                 }
                 else{
@@ -191,7 +195,7 @@ const addCount = async (req,res)=>{
                 res.json({success:true});
                 const [{count:quantity}] = cartData.products;
                     // console.log(cartdata.products[0].count);
-                if(quantity==0){
+                if(quantity==1){
                     await Cart.updateOne(
                         { userName: userId, "products.productId": proId },
                         {

@@ -128,4 +128,6 @@ user_route.post('/lessCount',cartController.lessCount)
 
 user_route.post('/search',productController.searchproduct)
 
+// user_route.get('/interconnect',userController.interconnection)
+
 module.exports = user_route;    

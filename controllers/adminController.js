@@ -190,8 +190,14 @@ const adminDashboard = async(req,res)=>{
    
 const UserList = async(req,res)=>{
     try {
-        const users = await User.find({is_admin:0})
-        res.render('userList',{users})
+        const page = Number(req.query.page) || 1
+        const limit = 15
+        const skip = (page - 1) * limit
+
+        const users = await User.find({is_admin:0}).skip(skip).limit(limit)
+        const usersCount = await User.find({is_admin:0}).count()
+        const totalPage = Math.ceil(usersCount / limit)
+        res.render('userList',{users,totalPage,page})
     } catch (error) {
         console.log(error.message);
     }
@@ -230,23 +236,46 @@ const salesReport = async(req,res)=>{
         console.log(error.message);
     }
 }
-const loadSalesReport = async(req,res)=>{
+const loadSalesReport = async (req, res) => {
     try {
         console.log('hiii');
-        const startDate = req.body.startDate
+        const startDate = req.body.startDate // Convert to Date object
         console.log(startDate);
-        const endDate =  req.body.endDate
-        console.log(endDate);  
-         const salesReport = await Order.find({$and:[{ status: 'delivered', date: { $gte: startDate, $lte: endDate }
-        }]})
-        console.log(salesReport);  
-        if (salesReport) {
-            res.render('salesReport', { salesReport })
+        const endDate = req.body.endDate // Convert to Date object
+        endDate.setDate(endDate.getDate() + 1); // Include the end date itself
+        console.log(endDate);
+            if(startDate >= endDate){
+    const salesReport = await Order.find({
+        status: 'delivered',
+        date: {
+            $gte: startDate,
+            $lte: endDate
         }
+    });
+
+    console.log(salesReport);
+
+    if (salesReport.length > 0) {
+        res.render('salesReport', { salesReport });
+    } else {
+        res.render('noSalesReport'); // Handle case where no sales report is found
+    }
+}
+        
     } catch (error) {
         console.log(error.message);
     }
-}
+};
+
+module.exports = {
+    loadSalesReport
+};
+
+
+module.exports = {
+    loadSalesReport
+};
+
 
 module.exports = {
     adminlogin,

@@ -5,6 +5,8 @@ const Address = require('../models/addressModel')
 const Order = require('../models/orderModel')
 const Razorpay = require('razorpay')
 const dotenv = require('dotenv');
+const moment = require('moment');
+const puppeteer = require('puppeteer');
 dotenv.config();
 
 
@@ -69,16 +71,16 @@ try {
 const loadOrder = async (req, res) => {
 
   try {
+    const page = Number(req.query.page) || 1
+        const limit = 15
+        const skip = (page - 1) * limit
+
     const userName = await User.findOne({ _id: req.session.user_id })
-    const orderData = await Order.find({ userId: req.session.user_id }).populate('products.productId', 'deliveryAddress')
-    if(orderData){
-      const exprdatedeliverd = new Date(orderData.date+ 5 * 24 * 60 * 60 * 1000);
-      if(orderData.date > exprdatedeliverd){
-        const orderData =  await Order.updateOne({status:'placed'},{$set:{status:'Delivered'}})
-      }
-    }
+    const orderData = await Order.find({ userId: req.session.user_id }).populate('products.productId', 'deliveryAddress').skip(skip).limit(limit)
+    const orderCount = await Order.find({ userId: req.session.user_id }).count()
+    const totalPage = Math.ceil(orderCount / limit)
     if (req.session.user_id) {
-      res.render('order', { userName, orderData: orderData })
+      res.render('order', { userName, orderData: orderData ,totalPage,page})
     }
     else {
       res.redirect('/')
@@ -267,20 +269,26 @@ const vieworderProducts = async (req, res) => {
 
     try {
       const orderid = req.query.id
-      const orderData = await Order.findOne({ _id: orderid }).populate('products.productId') 
-      console.log(orderData);
+      const orderData = await Order.findOne({ _id: orderid }).populate('products.productId')
+      console.log(orderData,'saifu');
       res.render('showOrderProduct', { orderData })
     } catch (error) {
       console.log(error.message);
     }
 }
+
 // admin order list
 
 const adminOrder = async(req,res)=>{
   try {
-    orderDetails = await Order.find({})
-    
-      res.render('orders',{orderDetails})
+    const page = Number(req.query.page) || 1
+        const limit = 15
+        const skip = (page - 1) * limit
+        
+    orderDetails = await Order.find({}).skip(skip).limit(limit)
+    orderCount= await Order.find().count()
+    const totalPage = Math.ceil(orderCount / limit)
+      res.render('orders',{orderDetails,totalPage,page})
   } catch (error) {
       console.log(error.message);
   }
