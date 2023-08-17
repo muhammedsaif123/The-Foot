@@ -147,7 +147,7 @@ const filterMen = async(req,res)=>{
     try {
         const id = req.query.id
         const products = await product.find({category:id})
-        res.render('Shop', {product: products});
+        res.render('shop', {product: products});
     } catch (error) {
         console.log(error.message);
     }
@@ -157,7 +157,7 @@ const filterWomen = async(req,res)=>{
     try {
         const id = req.query.id
         const products = await product.find({category:id})
-        res.render('Shop', {product: products});
+        res.render('shop', {product: products});
     } catch (error) {
         console.log(error.message);
     }
@@ -170,10 +170,10 @@ const priceFilter = async(req,res)=>{
             console.log('hii');
             const products = await product.find({ $and: [{ is_List: false ,price: { $gte: first, $lte: second } }] });
              console.log(products);
-        res.render('Shop', { product:products});
+        res.render('shop', { product:products});
         }else{
             const products = await product.find({ $and: [{ is_List: false }, { price: { $gte: first} }] });
-            res.render('Shop', { product:products});
+            res.render('shop', { product:products});
         }
     } catch (error) {
         console.log(error.message);
@@ -192,7 +192,7 @@ const searchproduct = async (req, res) => {
       let filter = "default";
       console.log(productData.length);
       
-      res.render("Shop", { categoryData, userName, product: productData, filter });
+      res.render("shop", { categoryData, userName, product: productData, filter });
     } catch (error) {
       console.log(error.message);
     }

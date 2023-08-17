@@ -235,7 +235,7 @@ const loadShop = async (req, res) => {
         const totalPage = Math.ceil(productCount / limit)
 
         if(req.session.user_id){
-            res.render('Shop',{ user: req.session.user_id, product : productData, category : categoryData,
+            res.render('shop',{ user: req.session.user_id, product : productData, category : categoryData,
                 page,Search,price, totalPage,cat : category})
         }else {
             res.render('login')
