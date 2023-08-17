@@ -108,7 +108,7 @@ const addfromWishlist = async (req,res)=>{
                 if(cartData){
                     res.json({success:true})
                 }else{
-                    res.redirect('/shop');
+                    res.redirect('/Shop');
                 }
             }
     } catch (error) {

@@ -42,7 +42,7 @@ user_route.get('/login',auth.isLogout,userController.userLogin)
 
 user_route.get('/home',auth.isLogin,userController.loadHome)
 
-user_route.get('/shop',auth.isLogin,userController.loadShop);
+user_route.get('/Shop',auth.isLogin,userController.loadShop);
 
 user_route.get('/productView',auth.isLogin,userController.productDetail)
 

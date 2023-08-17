@@ -59,7 +59,7 @@
                 <!-- top search -->
                 <div class="top-search bg-primary">
                     <div class="container-fluid">
-                        <form class="search-form" action="/shop" method="get">
+                        <form class="search-form" action="/Shop" method="get">
                             <div class="input-group">
                                 <span class="input-group-addon cursor-pointer">
                                     <button class="search-form_submit fas fa-search display-27 text-white"
@@ -98,7 +98,7 @@
                                         <li><a href="/home">Home</a>
                                            
                                         </li>
-                                        <li><a href="shop">shop</a>
+                                        <li><a href="Shop">shop</a>
                                            
                                         </li>
                                         <li><a href="cart">Cart</a>
@@ -179,8 +179,8 @@
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
                                         <div class="card-body">
                                             <ul class="list-unstyled">
-                                                <li><a href="/shop?category=MEN&value=<%=price%>&search=<%=Search%>">Men</a></li>
-                                                <li><a href="/shop?category=WOMEN&value=<%=price%>&search=<%=Search%>">Women</a></li>
+                                                <li><a href="/Shop?category=MEN&value=<%=price%>&search=<%=Search%>">Men</a></li>
+                                                <li><a href="/Shop?category=WOMEN&value=<%=price%>&search=<%=Search%>">Women</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -198,8 +198,8 @@
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
                                         <div class="card-body">
                                             <ul class="list-unstyled">
-                                                <li><a href="/shop?value=Low&category=<%=cat%>&search=<%=Search%>">Low to High</a></li>
-                                                <li><a href="/shop?value=High&category=<%=cat%>&search=<%=Search%>">High to Low</a></li>
+                                                <li><a href="/Shop?value=Low&category=<%=cat%>&search=<%=Search%>">Low to High</a></li>
+                                                <li><a href="/Shop?value=High&category=<%=cat%>&search=<%=Search%>">High to Low</a></li>
 
                                             </ul>
                                         </div>
@@ -225,7 +225,7 @@
                                             <img src="/product/<%=product.image[2]%>" alt="..."></a>
                                     </div>
                                     <div class="product-description">
-                                        <h3><a href="shop-product-detail.html"><%=product.productName%></a></h3>
+                                        <h3><a href="Shop-product-detail.html"><%=product.productName%></a></h3>
                                         <h4 class="price">
                                             <span class="offer-price">₹<%=product.price%></span> </h4>
                                             <% if(product.stockQuantity<=0){ %>
@@ -252,9 +252,9 @@
                 <ul>
                     <% for(i=0;i < totalPage; i++){ %>
                         <% if(i+1 == page){ %> 
-                            <a href="/shop?page=<%= i+1 %>&value=<%= price %>&category=<%= cat %>&search=<%= Search %>" class="active"><%= i+1 %></a>
+                            <a href="/Shop?page=<%= i+1 %>&value=<%= price %>&category=<%= cat %>&search=<%= Search %>" class="active"><%= i+1 %></a>
                         <%} else { %>
-                            <a href="/shop?page=<%= i+1 %>&value=<%= price %>&category=<%= cat %>&search=<%= Search %>"><%= i+1 %></a>
+                            <a href="/Shop?page=<%= i+1 %>&value=<%= price %>&category=<%= cat %>&search=<%= Search %>"><%= i+1 %></a>
                         <% }%>
                     <% } %>
 
