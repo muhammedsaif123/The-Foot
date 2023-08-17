@@ -6,7 +6,6 @@ const Order = require('../models/orderModel')
 const Banner = require('../models/bannerModel')
 const nodemailer = require('nodemailer')
 const Category = require('../models/categoryModel');
-const { response } = require('../routers/userRoutes');
 
 const securePassword = async(password)=>{
     try {
