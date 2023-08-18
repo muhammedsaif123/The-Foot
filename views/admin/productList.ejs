@@ -352,21 +352,16 @@
             ><i class="tf-icon bx bx-chevrons-left"></i
           ></a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="javascript:void(0);">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="javascript:void(0);">2</a>
-        </li>
-        <li class="page-item active">
-          <a class="page-link" href="javascript:void(0);">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="javascript:void(0);">4</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="javascript:void(0);">5</a>
-        </li>
+        <ul>
+          <% for(i=0;i < totalPage; i++){ %>
+              <% if(i+1 == page){ %> 
+                  <a href="/admin/orders?page=<%= i+1 %>" class="active"><%= i+1 %></a>
+              <%} else { %>
+                  <a href="/admin/orders?page=<%= i+1 %>"><%= i+1 %></a>
+              <% }%>
+          <% } %>
+    
+      </ul>
         <li class="page-item next">
           <a class="page-link" href="javascript:void(0);"
             ><i class="tf-icon bx bx-chevrons-right"></i
