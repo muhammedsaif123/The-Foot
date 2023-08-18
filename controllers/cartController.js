@@ -195,15 +195,15 @@ const addCount = async (req,res)=>{
                 res.json({success:true});
                 const [{count:quantity}] = cartData.products;
                     // console.log(cartdata.products[0].count);
-                if(quantity==1){
-                    await Cart.updateOne(
-                        { userName: userId, "products.productId": proId },
-                        {
-                          $pull: { products: { productId: proId } },
-                        }
-                      );
+                // if(quantity==1){
+                //     await Cart.updateOne(
+                //         { userName: userId, "products.productId": proId },
+                //         {
+                //           $pull: { products: { productId: proId } },
+                //         }
+                //       );
     
-                }
+                // }
             }
             
          
