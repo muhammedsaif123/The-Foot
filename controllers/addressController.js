@@ -56,7 +56,6 @@ const insertAddress = async(req,res)=>{
             });
             const addressData = await address.save();
             if(addressData){
-                console.log(hoiii);
                 res.redirect('/checkOutpage')
             }
             else{

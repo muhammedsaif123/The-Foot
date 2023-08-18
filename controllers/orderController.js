@@ -7,6 +7,7 @@ const Razorpay = require('razorpay')
 const dotenv = require('dotenv');
 const moment = require('moment');
 const puppeteer = require('puppeteer');
+const { addAddress } = require('./addressController');
 dotenv.config();
 
 
@@ -46,14 +47,25 @@ const loadCheckout = async (req, res) => {
     const Total = total[0].total
 
       const data = await Address.findOne({userId:req.session.user_id})
-      console.log(data,'hoiii');
+      console.log(data);
       const Wallet = await User.findOne({_id:req.session.user_id})
-      if(data.addresses.length>0){
-        res.render('checkOutpage', { data, Total,Wallet})
-      }
-      else{
+
+      if(data===null){
+        const adress = new Address({
+          userId:req.session.user_id,
+          addAddress:[]
+        })
         res.redirect('/addAddress')
+
+      }else{
+        if(data.addresses.length > 0 && data!=null ){
+          res.render('checkOutpage', { data, Total,Wallet})
+        }
+        else{
+          res.redirect('/addAddress')
+        }
       }
+     
     
 
   } catch (error) {
