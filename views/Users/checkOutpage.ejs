@@ -171,9 +171,9 @@
                 <div class="col-md-12 ">
                     
                  
-                  <%if(data[0].addresses.length > 0){%>
+                  <%if(data.addresses.length > 0){%>
 
-                    <% data[0].addresses.forEach((value,index)=>{ %>
+                    <% data.addresses.forEach((value,index)=>{ %>
                         <br>
                         <div class="cart-detail row card " style="padding-left: 20px; background-color: rgb(215, 249, 250);" >
                             <br>
@@ -197,9 +197,9 @@
                             <br>
                         </div>
                    <%})%>
-                  <%}else{
-                    %>
-                    <span>no address</span>
+                  <%}else{%>
+                    <br>
+                    <span style="font-weight: bold;">PLEASE ADD ADDRESS</span>
                   <%}%>
                 </div>
             </div>

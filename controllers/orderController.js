@@ -45,9 +45,16 @@ const loadCheckout = async (req, res) => {
     ]);
     const Total = total[0].total
 
-      const data = await Address.find({userId:req.session.user_id})
+      const data = await Address.findOne({userId:req.session.user_id})
+      console.log(data,'hoiii');
       const Wallet = await User.findOne({_id:req.session.user_id})
-    res.render('checkOutpage', { data, Total,Wallet})
+      if(data.addresses.length>0){
+        res.render('checkOutpage', { data, Total,Wallet})
+      }
+      else{
+        res.redirect('/addAddress')
+      }
+    
 
   } catch (error) {
     console.log(error.message);
