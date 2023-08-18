@@ -345,30 +345,7 @@
       </div>
     </div>
     <br>
-    <nav aria-label="Page navigation">
-      <ul class="pagination justify-content-center">
-        <li class="page-item prev">
-          <a class="page-link" href="javascript:void(0);"
-            ><i class="tf-icon bx bx-chevrons-left"></i
-          ></a>
-        </li>
-        <ul>
-          <% for(i=0;i < totalPage; i++){ %>
-              <% if(i+1 == page){ %> 
-                  <a href="/admin/product?page=<%= i+1 %>" class="active"><%= i+1 %></a>
-              <%} else { %>
-                  <a href="/admin/product?page=<%= i+1 %>"><%= i+1 %></a>
-              <% }%>
-          <% } %>
     
-      </ul>
-        <li class="page-item next">
-          <a class="page-link" href="javascript:void(0);"
-            ><i class="tf-icon bx bx-chevrons-right"></i
-          ></a>
-        </li>
-      </ul>
-    </nav>
 
 
     

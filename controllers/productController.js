@@ -48,14 +48,8 @@ const insertProduct = async(req,res)=>{
 const productListing = async(req,res)=>{
 
     try {
-        const page = Number(req.query.page) || 1
-        const limit = 15
-        const skip = (page - 1) * limit
-
-        const productData = await product.find({}).skip(skip).limit(limit)
-        productCount= await product.find().count()
-        const totalPage = Math.ceil(productCount / limit)
-        res.render('productList',{product:productData,totalPage,page});
+        const productData = await product.find({});
+        res.render('productList',{product:productData});
 
 
     } catch (error) {
