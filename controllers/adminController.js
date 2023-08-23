@@ -239,33 +239,36 @@ const salesReport = async(req,res)=>{
 const loadSalesReport = async (req, res) => {
     try {
         console.log('hiii');
-        const startDate = req.body.startDate // Convert to Date object
+        const startDate = new Date(req.body.startDate); // Convert to Date object
         console.log(startDate);
-        const endDate = req.body.endDate // Convert to Date object
+        const endDate = new Date(req.body.endDate); // Convert to Date object
         endDate.setDate(endDate.getDate() + 1); // Include the end date itself
         console.log(endDate);
-            if(startDate >= endDate){
-    const salesReport = await Order.find({
-        status: 'delivered',
-        date: {
-            $gte: startDate,
-            $lte: endDate
-        }
-    });
-
-    console.log(salesReport);
-
-    if (salesReport.length > 0) {
-        res.render('salesReport', { salesReport });
-    } else {
-        res.render('noSalesReport'); // Handle case where no sales report is found
-    }
-}
         
+        if (startDate < endDate) { // Check if startDate is less than endDate
+            const salesReport = await Order.find({
+                status: 'delivered',
+                date: {
+                    $gte: startDate,
+                    $lte: endDate
+                }
+            });
+
+            console.log(salesReport);
+
+            if (salesReport.length > 0) {
+                res.render('salesReport', { salesReport });
+            } else {
+                res.render('noSalesReport'); // Handle case where no sales report is found
+            }
+        } else {
+            res.render('invalidDateRange'); // Handle case where date range is invalid
+        }
     } catch (error) {
         console.log(error.message);
     }
 };
+
 
 module.exports = {
     loadSalesReport
