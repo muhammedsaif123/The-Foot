@@ -93,11 +93,14 @@ const loadOrder = async (req, res) => {
     const page = Number(req.query.page) || 1
         const limit = 15
         const skip = (page - 1) * limit
-
+const sortOrder='asc'
     const userName = await User.findOne({ _id: req.session.user_id })
-    const orderData = await Order.find({ userId: req.session.user_id }).populate('products.productId', 'deliveryAddress').skip(skip).limit(limit)
+    const orderData = await Order.find({ userId: req.session.user_id }).populate('products.productId', 'deliveryAddress').sort({date:-1}).skip(skip).limit(limit)
     const orderCount = await Order.find({ userId: req.session.user_id }).count()
     const totalPage = Math.ceil(orderCount / limit)
+    console.log(orderData)
+ 
+
     if (req.session.user_id) {
       res.render('order', { userName, orderData: orderData ,totalPage,page})
     }
