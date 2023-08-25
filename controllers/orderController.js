@@ -99,10 +99,10 @@ const sortOrder='asc'
     const orderCount = await Order.find({ userId: req.session.user_id }).count()
     const totalPage = Math.ceil(orderCount / limit)
     console.log(orderData)
- 
+    const rev = orderData.reverse()
 
     if (req.session.user_id) {
-      res.render('order', { userName, orderData: orderData ,totalPage,page})
+      res.render('order', { userName, orderData: rev ,totalPage,page})
     }
     else {
       res.redirect('/')
